@@ -15,7 +15,7 @@ export class UsersService {
     return await this.userRepository.find();
   }
 
-  async findOne(id: string): Promise<User> {
+  async findOne(id: number): Promise<User> {
     const user = await this.userRepository.findOne({ where: { id: id } });
     if (!user) {
       throw new NotFoundException('指定のユーザーは見つかりませんでした');
@@ -31,7 +31,7 @@ export class UsersService {
     return await this.userRepository.save(user);
   }
 
-  async update(id: string, updateUserDto: CreateUserDto): Promise<User> {
+  async update(id: number, updateUserDto: CreateUserDto): Promise<User> {
     const user = await this.findOne(id); // 既存のユーザーを取得
     user.user_name = updateUserDto.user_name || user.user_name;
     // ... 他のプロパティも同様に更新 ...
@@ -39,7 +39,7 @@ export class UsersService {
     return await this.userRepository.save(user);
   }
 
-  async remove(id: string): Promise<void> {
+  async remove(id: number): Promise<void> {
     const user = await this.findOne(id); // 削除する前にユーザーが存在するか確認
     await this.userRepository.remove(user);
   }

@@ -14,7 +14,7 @@ export class TasksController {
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string): Promise<Task> {
+  findOne(@Param('id') id: number): Promise<Task> {
     return this.tasksService.findOne(id);
   }
 
@@ -25,14 +25,14 @@ export class TasksController {
 
   @Put(':id')
   update(
-    @Param('id') id: string,
+    @Param('id') id: number,
     @Body() updateTaskDto: CreateTaskDto,
   ): Promise<Task> {
     return this.tasksService.update(id, updateTaskDto);
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string): Promise<void> {
+  remove(@Param('id') id: number): Promise<void> {
     return this.tasksService.remove(id);
   }
 }

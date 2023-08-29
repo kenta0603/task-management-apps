@@ -6,7 +6,7 @@ import { ApiProperty } from '@nestjs/swagger';
 export class User {
   @PrimaryGeneratedColumn()
   @ApiProperty({ description: 'ユーザーの一意のID' }) // Swaggerの説明を追加
-  id: string;
+  id: number;
 
   @Column()
   @ApiProperty({ description: 'ユーザーの名前' }) // Swaggerの説明を追加
