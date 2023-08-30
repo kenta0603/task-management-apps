@@ -43,4 +43,12 @@ export class UsersService {
     const user = await this.findOne(id); // 削除する前にユーザーが存在するか確認
     await this.userRepository.remove(user);
   }
+
+  // TODO 指定したユーザーが持つタスクを取得するAPIの作成
+  async findTasks(id: number): Promise<User> {
+    return await this.userRepository.findOne({
+      where: { id: id },
+      relations: ['tasks'],
+    });
+  }
 }

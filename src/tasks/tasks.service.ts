@@ -27,6 +27,7 @@ export class TasksService {
     const task = new Task();
     task.task_title = createTaskDto.task_title;
     task.task_content = createTaskDto.task_content;
+    task.user_id = createTaskDto.user_id;
     // ... 他のプロパティも同様に設定 ...
 
     return await this.taskRepository.save(task);

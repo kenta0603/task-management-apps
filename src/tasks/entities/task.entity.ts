@@ -15,8 +15,11 @@ export class Task {
   @Column() // 通常のカラムを示すデコレータ。
   task_title: string;
 
-  @Column() // 通常のカラムを示すデコレータ。
+  @Column()
   task_content: string;
+
+  @Column()
+  user_id: number;
 
   @ManyToOne(() => User, (user) => user.tasks) // 多対1のリレーションシップ。各タスクは1人のユーザーに関連付けられます。
   @JoinColumn({ name: 'user_id' }) // このデコレータは、外部キーとして使用されるカラムを指定します。

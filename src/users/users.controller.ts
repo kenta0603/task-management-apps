@@ -50,4 +50,16 @@ export class UsersController {
   remove(@Param('id') id: number): Promise<void> {
     return this.usersService.remove(id);
   }
+
+  // TODO 指定したユーザーが持つタスクを取得するAPIの作成
+  @Get(':id/tasks')
+  @ApiOperation({ summary: '指定したユーザーが持つタスクを取得' })
+  @ApiResponse({
+    status: 200,
+    description: '指定したユーザーが持つタスクを返します。',
+  })
+  @ApiParam({ name: 'id', description: 'ユーザーID' })
+  findTasks(@Param('id') id: number): Promise<User> {
+    return this.usersService.findTasks(id);
+  }
 }
